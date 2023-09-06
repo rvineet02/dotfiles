@@ -24,17 +24,6 @@ end
 
 require("nvim-tree").setup({
   on_attach = my_on_attach,
-  renderer = {
-    icons = {
-      show = {
-        folder = false,
-        file = false,
-        folder_arrow = false,
-        git = false,
-        modified = false,
-      },
-    },
-  },
   disable_netrw = true,
 })
 

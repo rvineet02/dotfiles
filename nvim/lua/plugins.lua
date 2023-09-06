@@ -31,7 +31,6 @@ require('lazy').setup({
   'christoomey/vim-tmux-navigator',
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -39,7 +38,8 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'chriskempson/base16-vim',
+    -- 'chriskempson/base16-vim',
+    "RRethy/nvim-base16",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
@@ -92,6 +92,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
     },
     build = ':TSUpdate',
     config = function()
@@ -152,6 +153,55 @@ require('lazy').setup({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  -- TODO: Add this back in when it's fixed
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+    event = "BufEnter",
+  },
+  "farmergreg/vim-lastplace",
+  {
+    "windwp/nvim-autopairs",
+    config = true,
+    event = "InsertEnter",
+  },
+  {
+    "stevearc/aerial.nvim",
+    config = function()
+      require("plugins.aerial")
+    end,
+  },
+  {
+    "echasnovski/mini.ai",
+    version = false,
+    config = true,
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    version = false,
+    config = true,
+  },
+  {
+    "echasnovski/mini.bracketed",
+    version = false,
+    config = true,
+  },
+  -- Harpoon
+  {
+    "ThePrimeagen/harpoon",
+    config = function()
+      require("plugins.harpoon")
+    end,
+    event = "BufEnter",
+  },
+  -- FZF Lua
+  {
+    "ibhagwan/fzf-lua",
+    config = function()
+      require("plugins.fzf-lua")
+    end,
+  }
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

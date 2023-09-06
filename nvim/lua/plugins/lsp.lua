@@ -4,8 +4,8 @@ lsp.ensure_installed({
   'tsserver',
   'lua_ls',
   'gopls',
-  'jdtls',
-  'rust_analyzer'
+  'rust_analyzer',
+  'clangd',
 })
 
 -- Preferences
