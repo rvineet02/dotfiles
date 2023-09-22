@@ -38,8 +38,8 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    -- 'chriskempson/base16-vim',
-    "RRethy/nvim-base16",
+    'chriskempson/base16-vim',
+    -- "RRethy/nvim-base16",
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
@@ -201,7 +201,18 @@ require('lazy').setup({
     config = function()
       require("plugins.fzf-lua")
     end,
-  }
+  },
+  -- Null-ls for formatting
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require("plugins.null-ls")
+    end,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    event = "BufEnter"
+  },
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

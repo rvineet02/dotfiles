@@ -13,6 +13,7 @@ files["kitty"]="$HOME/.config"
 files["neofetch"]="$HOME/.config"
 files["nvim"]="$HOME/.config"
 files[".tmux.conf"]="$HOME"
+files["flake8"]="$HOME/.config"
 
 # Backup existing files
 echo -e "\033[1m\033[92mBacking up existing files...\033[0m"
