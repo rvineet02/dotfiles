@@ -4,6 +4,8 @@ fish_add_path /opt/homebrew/bin
 fish_add_path /usr/local/texlive/2023/bin/universal-darwin
 fish_add_path /usr/local/texlive/2023/bin/universal-darwin/latexmk
 fish_add_path /usr/bin/python3
+fish_add_path /Users/vineetraju/miniconda3/condabin/conda
+fish_add_path /usr/local/mysql/bin/
 
 abbr -a prog 'cd ~/Documents/code'
 abbr -a c clear
@@ -11,7 +13,6 @@ abbr -a e exit
 abbr -a bu 'cd ~/Documents/code/old/programming/bu/'
 abbr -a tor 'open /Applications/Brave\ Browser.app/ -n --args --tor'
 abbr -a firefox 'open /Applications/Firefox.app/ -n'
-
 
 function code
   set location "$PWD/$argv"
@@ -94,6 +95,9 @@ abbr -a dcr "docker-compose restart"
 abbr -a --set-cursor=% dcrb "docker-compose up --no-deps --detach --build %;dclogs"
 abbr -a dcprune "docker system prune -a -f"
 
+# search in current dir for files with grep
+abbr -a scd "ls -la | grep ''"
+
 # tmux sessionizer
 bind \cf tmux-sessionizer
 setenv FZF_DEFAULT_OPTS "--border --color 'pointer:#B3E1A7,bg+:-1,fg+:#B3E1A7'"
@@ -133,3 +137,9 @@ pyenv init - | source
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/vineetraju/google-cloud-sdk/path.fish.inc' ]; . '/Users/vineetraju/google-cloud-sdk/path.fish.inc'; end
+
+# Conda
+source /Users/vineetraju/miniconda3/etc/fish/conf.d/conda.fish
+
+# Raspberry Pi
+abbr -a rsp "nvim scp://vineetr@vineetrpi.local/"
