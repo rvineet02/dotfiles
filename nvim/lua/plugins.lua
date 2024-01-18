@@ -36,14 +36,33 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
   },
 
+  -- Github dark themes: https://github.com/projekt0n/github-nvim-theme
+  -- {
+  --   -- Theme inspired by Atom
+  --   'chriskempson/base16-vim',
+  --   -- "RRethy/nvim-base16",
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+  --   end,
+  -- },
+  -- {
+  --   'kepano/flexoki-neovim',
+  --   name = 'flexoki',
+  --   config = function()
+  --     vim.cmd('colorscheme flexoki-dark')
+  --   end,
+  -- },
   {
-    -- Theme inspired by Atom
-    'chriskempson/base16-vim',
-    -- "RRethy/nvim-base16",
-    priority = 1000,
+    "rebelot/kanagawa.nvim",
     config = function()
-      vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+      vim.cmd.colorscheme "kanagawa"
     end,
+  },
+  {
+    -- Code Snippet Images
+    'narutoxy/silicon.lua',
+    config = function() require('plugins.silicon') end,
   },
 
   {
@@ -188,13 +207,13 @@ require('lazy').setup({
     config = true,
   },
   -- Harpoon
-  {
-    "ThePrimeagen/harpoon",
-    config = function()
-      require("plugins.harpoon")
-    end,
-    event = "BufEnter",
-  },
+  -- {
+  --   "ThePrimeagen/harpoon",
+  --   config = function()
+  --     require("plugins.harpoon")
+  --   end,
+  --   event = "BufEnter",
+  -- },
   -- FZF Lua
   {
     "ibhagwan/fzf-lua",
@@ -211,6 +230,12 @@ require('lazy').setup({
     dependencies = {
       "neovim/nvim-lspconfig",
     },
+    event = "BufEnter"
+  },
+  -- Illuminate words like the one you are hovering
+  {
+    'RRethy/vim-illuminate',
+    config = function() require('plugins.illuminate') end,
     event = "BufEnter"
   },
 }, {})
