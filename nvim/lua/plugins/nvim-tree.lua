@@ -24,7 +24,8 @@ end
 
 require("nvim-tree").setup({
   on_attach = my_on_attach,
-  disable_netrw = true,
+  disable_netrw = false,
+  hijack_netrw = true,
 })
 
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close
