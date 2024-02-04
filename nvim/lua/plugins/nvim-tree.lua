@@ -18,6 +18,7 @@ local function my_on_attach(bufnr)
   vim.keymap.set('n', 'R', api.tree.reload, opts('Refresh'))
   vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
   vim.keymap.set('n', '<2-LeftMouse>', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Ignored'))
 
   vim.keymap.set('n', '<LEADER>n', api.tree.toggle, { desc = 'Open [N]vim Tree' })
 end
