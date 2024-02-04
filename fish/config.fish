@@ -95,8 +95,9 @@ abbr -a dcr "docker-compose restart"
 abbr -a --set-cursor=% dcrb "docker-compose up --no-deps --detach --build %;dclogs"
 abbr -a dcprune "docker system prune -a -f"
 
-# search in current dir for files with grep
+# search 
 abbr -a scd "ls -la | grep ''"
+abbr -a sfh "cat ~/.local/share/fish/fish_history | grep ''"
 
 # tmux sessionizer
 bind \cf tmux-sessionizer
@@ -136,10 +137,14 @@ abbr -a ju "python3 -m notebook"
 pyenv init - | source
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/vineetraju/google-cloud-sdk/path.fish.inc' ]; . '/Users/vineetraju/google-cloud-sdk/path.fish.inc'; end
+if [ -f "/Users/vineetraju/google-cloud-sdk/path.fish.inc" ]; . "/Users/vineetraju/google-cloud-sdk/path.fish.inc"; end
 
 # Conda
 source /Users/vineetraju/miniconda3/etc/fish/conf.d/conda.fish
 
 # Raspberry Pi
 abbr -a rsp "nvim scp://vineetr@vineetrpi.local/"
+
+
+# Pandoc
+abbr -a pnd-conv "pandoc -t latex <input_file> -o <output_file>"

@@ -14,12 +14,17 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+vim.g.instant_username = "viint02"
+
 require('lazy').setup({
+
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
@@ -47,18 +52,25 @@ require('lazy').setup({
   --   end,
   -- },
   -- {
-  --   'kepano/flexoki-neovim',
-  --   name = 'flexoki',
+  --   'projekt0n/github-nvim-theme',
   --   config = function()
-  --     vim.cmd('colorscheme flexoki-dark')
+  --     vim.cmd.colorscheme "github_dark_dimmed"
   --   end,
   -- },
+  -- CURRENT COLORSCHEME:
   {
-    "rebelot/kanagawa.nvim",
+    'sainnhe/gruvbox-material',
     config = function()
-      vim.cmd.colorscheme "kanagawa"
+      vim.cmd.colorscheme "gruvbox-material"
     end,
   },
+
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   config = function()
+  --     vim.cmd.colorscheme "kanagawa-dragon"
+  --   end,
+  -- },
   {
     -- Code Snippet Images
     'narutoxy/silicon.lua',
@@ -201,19 +213,31 @@ require('lazy').setup({
     version = false,
     config = true,
   },
+  -- {
+  --   'echasnovski/mini.notify',
+  --   version = false,
+  -- },
+  {
+    'echasnovski/mini.move',
+    version = false,
+    config = function()
+      require('plugins.mini')
+    end
+  },
   {
     "echasnovski/mini.bracketed",
     version = false,
     config = true,
   },
   -- Harpoon
-  -- {
-  --   "ThePrimeagen/harpoon",
-  --   config = function()
-  --     require("plugins.harpoon")
-  --   end,
-  --   event = "BufEnter",
-  -- },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("plugins.harpoon")
+    end
+  },
   -- FZF Lua
   {
     "ibhagwan/fzf-lua",
@@ -237,6 +261,22 @@ require('lazy').setup({
     'RRethy/vim-illuminate',
     config = function() require('plugins.illuminate') end,
     event = "BufEnter"
+  },
+  -- Markdown previewer
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = { "markdown" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+  },
+  {
+    'jbyuki/instant.nvim',
+    config = function()
+      require('plugins.instant')
+    end,
   },
 }, {})
 
