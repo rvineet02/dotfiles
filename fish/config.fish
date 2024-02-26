@@ -75,6 +75,8 @@ abbr -a gsur 'git submodule update --recursive'
 abbr -a glol 'git log --oneline'
 abbr -a glopt 'git log '
 abbr -a glop 'git log --pretty=fuller'
+abbr -a grmig 'git ls-files -c --ignored --exclude-standard -z | xargs -0 git rm --cached'
+
 
 # Tmux aliases
 abbr -a t 'tmux'
