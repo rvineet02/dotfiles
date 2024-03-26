@@ -136,6 +136,11 @@ require('lazy').setup({
     'narutoxy/silicon.lua',
     config = function() require('plugins.silicon') end,
   },
+  {
+    -- Git Conflict Markers
+    'rhysd/conflict-marker.vim',
+
+  },
 
   {
     -- Set lualine as statusline
