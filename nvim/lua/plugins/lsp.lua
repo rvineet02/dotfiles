@@ -3,7 +3,7 @@ local lsp = require('lsp-zero').preset('recommended')
 lsp.ensure_installed({
   'tsserver',
   'lua_ls',
-  'gopls',
+  -- 'gopls',
   'rust_analyzer',
   'clangd',
 })
@@ -60,7 +60,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<LEADER>a', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<LEADER>f', function() vim.lsp.buf.format({ async = true }) end, opts)
   vim.keymap.set('n', '<LEADER>w', function()
-    vim.lsp.buf.format()
+    -- vim.lsp.buf.format()
     vim.cmd('w')
   end, opts)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)

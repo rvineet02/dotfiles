@@ -268,14 +268,18 @@ require('lazy').setup({
     event = "BufEnter"
   },
   -- Markdown previewer
+  -- {
+  --   'iamcco/markdown-preview.nvim',
+  --   ft = { "markdown" },
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   build = "cd app && yarn install",
+  --   init = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  -- },
   {
-    'iamcco/markdown-preview.nvim',
-    ft = { "markdown" },
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && yarn install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
+    'junegunn/vim-xmark',
+    build = "make",
   },
   {
     'jbyuki/instant.nvim',
