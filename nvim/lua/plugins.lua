@@ -24,7 +24,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- CONFIGURATIONS FOR PLUGINS
 vim.g.instant_username = "viint02"
-vim.g.mkdp_theme = 'light'
+-- vim.g.mkdp_theme = 'light'
+-- vim.opt.background = "dark"
 
 require('lazy').setup({
 
@@ -35,6 +36,26 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+        { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -47,15 +68,15 @@ require('lazy').setup({
   },
 
   -- Github dark themes: https://github.com/projekt0n/github-nvim-theme
-  -- {
-  --   -- Theme inspired by Atom
-  --   'chriskempson/base16-vim',
-  --   -- "RRethy/nvim-base16",
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
-  --   end,
-  -- },
+  {
+    -- Theme inspired by Atom
+    'chriskempson/base16-vim',
+    -- "RRethy/nvim-base16",
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'base16-gruvbox-dark-hard'
+    end,
+  },
   -- {
   --   'projekt0n/github-nvim-theme',
   --   config = function()
@@ -63,13 +84,14 @@ require('lazy').setup({
   --   end,
   -- },
   -- CURRENT COLORSCHEME:
-  {
-    'sainnhe/gruvbox-material',
-    config = function()
-      vim.cmd.colorscheme "gruvbox-material"
-    end,
-  },
-
+  -- {
+  --   'eemed/sitruuna.vim',
+  -- },
+  -- {
+  --   "polirritmico/monokai-nightasty.nvim",
+  --   lazy=false,
+  --   priority=1000,
+  -- },
   -- {
   --   'rebelot/kanagawa.nvim',
   --   config = function()
@@ -158,31 +180,54 @@ require('lazy').setup({
     'nvim-tree/nvim-web-devicons',
   },
 
-  -- LSP + Autocomplete
+  -- -- LSP + Autocomplete
+  -- {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   branch = 'v1.x',
+  --   config = function() require('plugins.lsp') end,
+  --   dependencies = {
+  --     -- LSP Support
+  --     { 'neovim/nvim-lspconfig' },             -- Required
+  --     { 'williamboman/mason.nvim' },           -- Optional
+  --     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+  --
+  --     -- Autocompletion
+  --     { 'hrsh7th/nvim-cmp' },         -- Required
+  --     { 'hrsh7th/cmp-nvim-lsp' },     -- Required
+  --     { 'hrsh7th/cmp-buffer' },       -- Optional
+  --     { 'hrsh7th/cmp-path' },         -- Optional
+  --     { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+  --     { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+  --
+  --     -- Snippets
+  --     { 'L3MON4D3/LuaSnip' },             -- Required
+  --     { 'rafamadriz/friendly-snippets' }, -- Optional
+  --
+  --     { 'simrat39/rust-tools.nvim' }
+  --   }
+  -- },
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    config = function() require('plugins.lsp') end,
-    dependencies = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },             -- Required
-      { 'williamboman/mason.nvim' },           -- Optional
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+  'neovim/nvim-lspconfig',
+  event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = {
+    -- LSP servers manager
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },         -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-      { 'hrsh7th/cmp-buffer' },       -- Optional
-      { 'hrsh7th/cmp-path' },         -- Optional
-      { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-      { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'saadparwaiz1/cmp_luasnip',
 
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },             -- Required
-      { 'rafamadriz/friendly-snippets' }, -- Optional
-
-      { 'simrat39/rust-tools.nvim' }
-    }
+    -- Snippets
+    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets',
+  },
+  config = function()
+    require('plugins.lsp')
+  end,
   },
 
   {
@@ -252,7 +297,7 @@ require('lazy').setup({
   },
   -- Null-ls for formatting
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    "nvimtools/none-ls.nvim",
     config = function()
       require("plugins.null-ls")
     end,
@@ -268,15 +313,15 @@ require('lazy').setup({
     event = "BufEnter"
   },
   -- Markdown previewer
-  -- {
-  --   'iamcco/markdown-preview.nvim',
-  --   ft = { "markdown" },
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   build = "cd app && yarn install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  -- },
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = { "markdown" },
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && node install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+  },
   {
     'junegunn/vim-xmark',
     build = "make",
