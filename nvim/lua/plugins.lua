@@ -81,6 +81,14 @@ require('lazy').setup({
       { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
     },
   },
+  -- git diff management
+  {
+    'sindrets/diffview.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
+
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
