@@ -37,6 +37,7 @@ opt.wrap = true
 opt.mouse = "a"
 opt.clipboard = "unnamed"
 opt.cmdheight = 0
+opt.colorcolumn = "80"
 
 o.showmode = false
 o.breakindent = true
