@@ -76,6 +76,7 @@ abbr -a glol 'git log --oneline'
 abbr -a glopt 'git log '
 abbr -a glop 'git log --pretty=fuller'
 abbr -a grmig 'git ls-files -c --ignored --exclude-standard -z | xargs -0 git rm --cached'
+abbr -a gaacp 'git add --all ; git commit -m ".";git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 
 
 # Tmux aliases
